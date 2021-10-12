@@ -3,7 +3,7 @@ import "flatpickr/dist/themes/dark.css";
 
 import Flatpickr from "react-flatpickr";
 
-const DatePicker = (props) => {
+const DatePickerLegal = (props) => {
 
     const [date, setDate] = useState(new Date());
 
@@ -13,11 +13,11 @@ const DatePicker = (props) => {
             <Flatpickr
                     defaultValue={date}
                     value={date}
-                    onChange={props.onChangeDateFiscal}
+                    onChange={props.onChangeDateLegal}
                 />
             </div>
         </>
     );
 }
 
-export default DatePicker
+export default DatePickerLegal

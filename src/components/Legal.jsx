@@ -1,8 +1,8 @@
 import React from "react";
 
-import DatePicker from './tools/DatePicker';
+import DatePickerLegal from './tools/DatePickerLegal';
 
-const Legal = () => {
+const Legal = (props) => {
     return (
         <>
             <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -28,7 +28,9 @@ const Legal = () => {
                                     id="nombre-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Nombre del representante"
+                                    onChange={props.onChangeLegalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['nombre-rep']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -39,11 +41,14 @@ const Legal = () => {
                                     name="genero-rep"
                                     id="genero-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
+                                    onChange={props.onChangeLegalHandler}
                                     >
+                                        <option selected disabled hidden>Seleccionar:</option>
                                         <option>Masculino</option>
                                         <option>Femenino</option>
                                         <option>Otro</option>
                                     </select>
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['genero-rep']}</span>
                                 </div>
                             </div>
 
@@ -52,7 +57,7 @@ const Legal = () => {
                                     <label className="block text-sm font-medium text-gray-700">
                                         Fecha de nacimiento
                                     </label>
-                                    <DatePicker />
+                                    <DatePickerLegal onChangeDateLegal={props.onChangeDateLegal} />
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -64,7 +69,9 @@ const Legal = () => {
                                     id="entidad-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Estado de nacimiento del representante"
+                                    onChange={props.onChangeLegalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['entidad-rep']}</span>
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 gap-6">
@@ -78,7 +85,9 @@ const Legal = () => {
                                     id="pais-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="País de nacimiento del representante"
+                                    onChange={props.onChangeLegalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['pais-rep']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -90,7 +99,9 @@ const Legal = () => {
                                     id="nacionalidad-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Mexicana"
+                                    onChange={props.onChangeLegalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['nacionalidad-rep']}</span>
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 gap-6">
@@ -104,7 +115,9 @@ const Legal = () => {
                                     id="curp-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Número de CURP del representante"
+                                    onChange={props.onChangeLegalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['curp-rep']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -116,7 +129,9 @@ const Legal = () => {
                                     id="rfc-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Número de RFC del representante"
+                                    onChange={props.onChangeLegalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['rfc-rep']}</span>
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 gap-6">
@@ -130,7 +145,9 @@ const Legal = () => {
                                     id="domicilio-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Calle, número y colonia"
+                                    onChange={props.onChangeLegalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['domicilio-rep']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -141,12 +158,15 @@ const Legal = () => {
                                     name="estado-civil-rep"
                                     id="estado-civil-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
+                                    onChange={props.onChangeLegalHandler}
                                     >
+                                        <option selected disabled hidden>Seleccionar:</option>
                                         <option>Soltero(a)</option>
                                         <option>Casado(a)</option>
                                         <option>Divorciado(a)</option>
                                         <option>Viudo(a)</option>
                                     </select>
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['estado-civil-rep']}</span>
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 gap-6">
@@ -160,7 +180,9 @@ const Legal = () => {
                                     id="email-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Email del representante"
+                                    onChange={props.onChangeLegalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['email-rep']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -172,7 +194,9 @@ const Legal = () => {
                                     id="tel-rep"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Teléfono de diez dígitos del representante"
+                                    onChange={props.onChangeLegalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorLegal['tel-rep']}</span>
                                 </div>
                             </div>
                             <div>
@@ -197,11 +221,20 @@ const Legal = () => {
                                         <label
                                             className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                                         >
+                                            { props.legalData['doc-upload'] ? (
+                                                    <div className="my-1">
+                                                        <span>{props.legalData['doc-upload'].name}</span>
+                                                    </div>
+                                                ) : (
+                                                    <div></div>
+                                                )
+                                            }
                                             <span>Sube un archivo</span>
-                                            <input id="doc-upload" name="doc-upload" type="file" className="sr-only" accept=".png, .jpg, .pdf" />
+                                            <input id="doc-upload" name="doc-upload" type="file" className="sr-only" accept=".png, .jpg, .pdf" onChange={props.onChangeLegalFileHandler} />
                                         </label>
                                         </div>
                                         <p className="text-xs text-gray-500">PNG, JPG o PDF</p>
+                                        <span className="text-red-500 text-xs" >{props.errorLegal['doc-upload']}</span>
                                     </div>
                                 </div>
                             </div>

@@ -2,7 +2,8 @@ import React from "react";
 
 import DatePicker from './tools/DatePicker';
 
-const Fiscal = () => {
+const Fiscal = (props) => {
+
     return (
         <>
             <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -28,7 +29,9 @@ const Fiscal = () => {
                                     id="razon-social"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Nombre fiscal de empresa, S.A."
+                                    onChange={props.onChangeFiscalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorFiscal['razon-social']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -40,7 +43,9 @@ const Fiscal = () => {
                                     id="nombre-comercial"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Nombre comercial de empresa"
+                                    onChange={props.onChangeFiscalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorFiscal['nombre-comercial']}</span>
                                 </div>
                             </div>
 
@@ -55,13 +60,15 @@ const Fiscal = () => {
                                     id="nacionalidad"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Mexicana"
+                                    onChange={props.onChangeFiscalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorFiscal['nacionalidad']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
                                         Fecha de constitución
                                     </label>
-                                    <DatePicker />
+                                    <DatePicker onChangeDateFiscal={props.onChangeDateFiscal} />
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 gap-6">
@@ -75,7 +82,9 @@ const Fiscal = () => {
                                     id="rfc"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Registro de RFC"
+                                    onChange={props.onChangeFiscalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorFiscal['rfc']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -86,11 +95,14 @@ const Fiscal = () => {
                                     name="regimen-fiscal"
                                     id="regimen-fiscal"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
+                                    onChange={props.onChangeFiscalHandler}
                                     >
+                                        <option selected disabled hidden>Seleccionar:</option>
                                         <option>General</option>
                                         <option>Sin fines de lucro</option>
                                         <option>Acumulación de ingresos</option>
                                     </select>
+                                    <span className="text-red-500 text-xs" >{props.errorFiscal['regimen-fiscal']}</span>
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 gap-6">
@@ -104,7 +116,9 @@ const Fiscal = () => {
                                     id="industria"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Industria registrada"
+                                    onChange={props.onChangeFiscalHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorFiscal['industria']}</span>
                                 </div>
                             </div>
                         </div>

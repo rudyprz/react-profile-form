@@ -1,6 +1,6 @@
 import React from "react";
 
-const Address = () => {
+const Address = (props) => {
     return (
         <>
             <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -26,7 +26,9 @@ const Address = () => {
                                     id="calle"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Nombre de calle"
+                                    onChange={props.onChangeAddHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorAddress['calle']}</span>
                                 </div>
                             </div>
 
@@ -41,7 +43,9 @@ const Address = () => {
                                     id="num-ext"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="#123"
+                                    onChange={props.onChangeAddHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorAddress['num-ext']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -53,7 +57,9 @@ const Address = () => {
                                     id="num-int"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Piso 5"
+                                    onChange={props.onChangeAddHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorAddress['num-int']}</span>
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 gap-6">
@@ -67,7 +73,9 @@ const Address = () => {
                                     id="codigo-postal"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="66220"
+                                    onChange={props.onChangeAddHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorAddress['codigo-postal']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -79,7 +87,9 @@ const Address = () => {
                                     id="colonia"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Nombre de colonia"
+                                    onChange={props.onChangeAddHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorAddress['colonia']}</span>
                                 </div>
                             </div>
                             <div className="grid grid-cols-6 gap-6">
@@ -93,7 +103,9 @@ const Address = () => {
                                     id="ciudad"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Nombre de ciudad"
+                                    onChange={props.onChangeAddHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorAddress['ciudad']}</span>
                                 </div>
                                 <div className="col-span-6 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -105,7 +117,9 @@ const Address = () => {
                                     id="estado"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Estado"
+                                    onChange={props.onChangeAddHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorAddress['estado']}</span>
                                 </div>
                                 <div className="col-span-6 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -117,7 +131,9 @@ const Address = () => {
                                     id="pais"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="México"
+                                    onChange={props.onChangeAddHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorAddress['pais']}</span>
                                 </div>
                             </div>
 
@@ -143,11 +159,20 @@ const Address = () => {
                                         <label
                                             className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                                         >
+                                            { props.addressData['file-upload'] ? (
+                                                    <div className="my-1">
+                                                        <span>{props.addressData['file-upload'].name}</span>
+                                                    </div>
+                                                ) : (
+                                                    <div></div>
+                                                )
+                                            }
                                             <span>Sube un archivo</span>
-                                            <input id="file-upload" name="file-upload" type="file" className="sr-only" accept=".png, .jpg, .pdf" />
+                                            <input id="file-upload" name="file-upload" type="file" className="sr-only" accept=".png, .jpg, .pdf" onChange={props.onChangeAddFileHandler}/>
                                         </label>
                                         </div>
                                         <p className="text-xs text-gray-500">PNG, JPG o PDF</p>
+                                        <span className="text-red-500 text-xs" >{props.errorAddress['file-upload']}</span>
                                     </div>
                                 </div>
                             </div>

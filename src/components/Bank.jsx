@@ -1,6 +1,6 @@
 import React from "react";
 
-const Bank = () => {
+const Bank = (props) => {
     return (
         <>
             <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -22,11 +22,13 @@ const Bank = () => {
                                     </label>
                                     <input
                                     type="text"
-                                    name="telefono"
-                                    id="telefono"
+                                    name="clabe"
+                                    id="clabe"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Número de CLABE para transferencia interbancaria"
+                                    onChange={props.onChangeBankHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorBank['clabe']}</span>
                                 </div>
                                 <div className="col-span-4 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
@@ -34,11 +36,13 @@ const Bank = () => {
                                     </label>
                                     <input
                                     type="text"
-                                    name="correo"
-                                    id="correo"
+                                    name="banco"
+                                    id="banco"
                                     className="shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mt-2 px-2 py-2 block w-full sm:text-sm border border-gray-300 rounded-lg"
                                     placeholder="Nombre de la institución financiera de la cuenta"
+                                    onChange={props.onChangeBankHandler}
                                     />
+                                    <span className="text-red-500 text-xs" >{props.errorBank['banco']}</span>
                                 </div>
                             </div>
                         </div>
